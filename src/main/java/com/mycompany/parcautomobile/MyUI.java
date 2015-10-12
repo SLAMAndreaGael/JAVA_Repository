@@ -31,6 +31,7 @@ import javax.servlet.annotation.WebServlet;
 public class MyUI extends UI {
 
     private Grid contactList = new Grid();
+    private Grid contactListPB = new Grid();
     private Table contactTable = new Table();
 
     @Override
@@ -53,6 +54,14 @@ public class MyUI extends UI {
         contactList.removeColumn("id");  // masquer la colonne
         //  contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
         contactList.setSizeFull();
+        
+        contactListPB.setContainerDataSource(Vehicule.getVehiculesPrixBas());
+
+        //contactTable.setContainerDataSource(new BeanItemContainer<>( Vehicule.class));
+        contactListPB.setColumnOrder("marque", "modele", "prix");  // choisir l'ordre des colonnes
+        contactListPB.removeColumn("id");  // masquer la colonne
+        //  contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
+        contactListPB.setSizeFull();
 
     }
 
@@ -63,6 +72,8 @@ public class MyUI extends UI {
         // ajouts de composants
         layout.addComponent(new Label(" Parc de véhicule"));
         layout.addComponent(contactList);
+        layout.addComponent(new Label(" Véhicules < 15000 €"));
+        layout.addComponent(contactListPB);
         //layout.addComponent(contactTable);
         setContent(layout);  // affectation de la vue
     }
