@@ -32,26 +32,29 @@ public class MyUI extends UI {
 
     private Grid contactList = new Grid();
     private Grid contactListPB = new Grid();
+    private Grid contactListV = new Grid();
     private Table contactTable = new Table();
+    
 
     @Override
     protected void init(VaadinRequest vaadinrequest) {
         configureComponents();  // configuration des composants
         buildLayout();          //  construction de la vue
+        
     }
 
+    /**
+     * @author Gael CHENEVIER
+     * @version 1.0
+     * @return configuration des tableaux des résultats des différentes fonction des classes Vehicule et Visiteur.
+     */
     private void configureComponents() {
-
-        // Chargement des données.
-        Vehicule vehicule1 = new Vehicule(1, "Renault", "Clio", 10000);
-        Vehicule vehicule2 = new Vehicule(2, "Audi", "A8", 12500);
-        Vehicule vehicule3 = new Vehicule(3, "Toyota", "Yaris", 15005);
 
         contactList.setContainerDataSource(Vehicule.getVehicules());
 
         //contactTable.setContainerDataSource(new BeanItemContainer<>( Vehicule.class));
         contactList.setColumnOrder("marque", "modele", "prix");  // choisir l'ordre des colonnes
-        contactList.removeColumn("id");  // masquer la colonne
+        contactList.removeColumn("id"); // masquer la colonne
         //  contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
         contactList.setSizeFull();
         
@@ -62,9 +65,27 @@ public class MyUI extends UI {
         contactListPB.removeColumn("id");  // masquer la colonne
         //  contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
         contactListPB.setSizeFull();
+        
+        contactListV.setContainerDataSource(Visiteur.getVisiteurs());
 
+        //contactTable.setContainerDataSource(new BeanItemContainer<>( Visiteur.class));
+        contactListV.setColumnOrder("prenom", "nom", "codeP", "adresse");  // choisir l'ordre des colonnes
+        contactListV.removeColumn("id");
+        //  contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
+        contactListV.setSizeFull();
+        
+   
+   Init uniqueinstance=Init.getInstance();
+    uniqueinstance.chargementinitial();  
+
+   
     }
 
+    /**
+     * @author Gael CHENEVIER
+     * @version 1.0
+     * @return affichage des tableaux des résultats des fonctions des classes Visiteur et Vehicule
+     */
     private void buildLayout() {
 
         final VerticalLayout layout = new VerticalLayout();
@@ -74,9 +95,13 @@ public class MyUI extends UI {
         layout.addComponent(contactList);
         layout.addComponent(new Label(" Véhicules < 15000 €"));
         layout.addComponent(contactListPB);
+        layout.addComponent(new Label(" Visiteurs"));
+        layout.addComponent(contactListV);
         //layout.addComponent(contactTable);
         setContent(layout);  // affectation de la vue
+       
     }
+
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
