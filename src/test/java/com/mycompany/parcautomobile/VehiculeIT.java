@@ -146,6 +146,7 @@ public class VehiculeIT {
     public void testGetPrixMajore() {
         System.out.println("getPrixMajore");
         Vehicule instance = new Vehicule();
+        instance.setMarque("Renault");
         if(instance.getMarque().equals("Renault")){
             double expResult = instance.getPrix()*1.10;
             double result = instance.getPrixMajore();
