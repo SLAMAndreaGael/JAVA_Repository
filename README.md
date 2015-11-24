@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ParcAutomobile
 ==============
 
@@ -36,3 +37,6 @@ next theme compilation or running the "mvn clean" target.
 When developing the theme, running the application in the "run" mode (rather than
 in "debug") in the IDE can speed up consecutive on-the-fly theme compilations
 significantly.
+=======
+# JAVA_Repository
+>>>>>>> b65c6724f3350ac9640cf32dc9c7b32ee0538efd

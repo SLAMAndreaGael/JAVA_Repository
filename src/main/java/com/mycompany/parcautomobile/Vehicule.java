@@ -139,4 +139,20 @@ public class Vehicule {
          }
         return vehiculesPrixBas;
     }
+    
+    public double getPrixMajore(){
+        double prixMajore;
+        if (marque == "Renault"){
+           prixMajore = prix*1.05; 
+        }
+        else{
+            if(marque == "Peugeot"){
+                prixMajore = prix*1.10;    
+            }
+        else{
+              prixMajore = this.prix;
+            }
+        }
+        return prixMajore;
+    }
 }

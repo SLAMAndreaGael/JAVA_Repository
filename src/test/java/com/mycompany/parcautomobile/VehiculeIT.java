@@ -138,4 +138,18 @@ public class VehiculeIT {
         instance.setId(id);
       
     }
+    
+    /**
+     * Test of getPrixMajore method, of class Vehicule.
+     */
+    @Test
+    public void testGetPrixMajore() {
+        System.out.println("getPrixMajore");
+        Vehicule instance = new Vehicule();
+        double expResult = 0.0;
+        double result = instance.getPrixMajore();
+        assertEquals(expResult, result, 0.0);
+    }
+    
+    
 }
