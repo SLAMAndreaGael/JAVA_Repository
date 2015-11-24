@@ -146,8 +146,17 @@ public class VehiculeIT {
     public void testGetPrixMajore() {
         System.out.println("getPrixMajore");
         Vehicule instance = new Vehicule();
-        double expResult = 0.0;
-        double result = instance.getPrixMajore();
+        if(instance.getMarque().equals("Renault")){
+            double expResult = instance.getPrix()*1.10;
+            double result = instance.getPrixMajore();
+        }else{
+            if(instance.getMarque().equals("Peugeot")){
+                double expResult = instance.getPrix()*1.05;
+                double result = instance.getPrixMajore();
+            }
+        }
+        double expResult = instance.getPrix();
+        double result = instance.getPrixMajore(); 
         assertEquals(expResult, result, 0.0);
     }
     
