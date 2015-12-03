@@ -28,9 +28,9 @@ import java.io.FileOutputStream;
         }
         
     public void chargementinitial(){    
-     Vehicule vehicule1 = new Vehicule(1, "Renault", "Clio", 10000);
-     Vehicule vehicule2 = new Vehicule(2, "Audi", "A8", 12500);
-     Vehicule vehicule3 = new Vehicule(3, "Toyota", "Yaris", 15005);
+     Vehicule vehicule1 = new Vehicule(1, "Renault", "Clio", 10000,"Essence");
+     Vehicule vehicule2 = new Vehicule(2, "Audi", "A8", 12500,"Diesel");
+     Vehicule vehicule3 = new Vehicule(3, "Toyota", "Yaris", 15005,"Diesel");
      Visiteur visiteur1 = new Visiteur(1, "CR", "Gaël","22 rue de la république" , 42000);
      Visiteur visiteur2 = new Visiteur(2, "Zambelli", "Andréa", "1 Allée des moineaux", 42340);
      Visiteur visiteur3 = new Visiteur(3,"Ibars", "Sofiane", "2 Rue de l'anneau", 42600);
@@ -41,9 +41,9 @@ import java.io.FileOutputStream;
      */ 
     public void encoderXML(){
         System.out.println("FICHIER CREE !");
-         Vehicule vehicule1 = new Vehicule(1, "Renault", "Clio", 10000);
-     Vehicule vehicule2 = new Vehicule(2, "Audi", "A8", 12500);
-     Vehicule vehicule3 = new Vehicule(3, "Toyota", "Yaris", 15005);
+         Vehicule vehicule1 = new Vehicule(1, "Renault", "Clio", 10000,"Essence");
+     Vehicule vehicule2 = new Vehicule(2, "Audi", "A8", 12500,"Diesel");
+     Vehicule vehicule3 = new Vehicule(3, "Toyota", "Yaris", 15005,"Diesel");
         XMLEncoder encoder = null;
         try{
             encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream("vehicule.xml")));

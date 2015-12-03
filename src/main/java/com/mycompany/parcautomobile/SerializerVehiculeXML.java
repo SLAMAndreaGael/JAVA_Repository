@@ -15,9 +15,9 @@ import java.io.BufferedOutputStream;
 public class SerializerVehiculeXML {
     
     public static void main(final String argv[]) {
-        final Vehicule vehicule1 = new Vehicule(1, "Renault", "Clio", 10000);
-        final Vehicule vehicule2 = new Vehicule(2, "Audi", "A8", 12500);
-        final Vehicule vehicule3 = new Vehicule(3, "Toyota", "Yaris", 15005); 
+        final Vehicule vehicule1 = new Vehicule(1, "Renault", "Clio", 10000,"Essence");
+        final Vehicule vehicule2 = new Vehicule(2, "Audi", "A8", 12500,"Diesel");
+        final Vehicule vehicule3 = new Vehicule(3, "Toyota", "Yaris", 15005,"Diesel"); 
        XMLEncoder encoder = null;
         
         try{

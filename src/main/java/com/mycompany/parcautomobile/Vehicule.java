@@ -20,6 +20,7 @@ public class Vehicule {
     private String marque;
     private String modele;
     private double prix;
+    private String carburant;
     private static BeanItemContainer<Vehicule> vehicules = new BeanItemContainer<Vehicule>(Vehicule.class);
     
     
@@ -33,12 +34,14 @@ public class Vehicule {
      * @param marque marque du vehicule
      * @param modele modèle du vehicule
      * @param prix  prix du vehicule
+     * @param carburant type de carburant du véhicule
      */
-    public Vehicule(int id, String marque, String modele, double prix) {
+    public Vehicule(int id, String marque, String modele, double prix, String carburant) {
         this.id = id;
         this.marque = marque;
         this.modele = modele;
         this.prix = prix;
+        this.carburant = carburant;
         this.vehicules.addBean(this);
     }
     
@@ -113,6 +116,14 @@ public class Vehicule {
         this.id = id;
     }
     
+    public String getCarburant(){
+        return carburant;
+    }
+    
+    public void setCarburant(String carburant){
+        this.carburant = carburant;
+    }
+    
     /**
      * @author Gael CHENEVIER
      * @return collection de vehicules 
@@ -121,24 +132,7 @@ public class Vehicule {
     
        return vehicules;
     }
-    
-    /**
-     * @author Gael CHENEVIER
-     * @version 1.0
-     */
-    public static BeanItemContainer<Vehicule> getVehiculesPrixBas() {
-        
-        BeanItemContainer<Vehicule> vehiculesPrixBas = new BeanItemContainer<Vehicule>(Vehicule.class);
-        List<Vehicule> listeVehicule = (List<Vehicule>)vehicules.getItemIds();
-        
-         for (Vehicule vehicule : listeVehicule) {
-             
-            if( (vehicule.getPrix()) <= 15000 ){
-                 vehiculesPrixBas.addBean(vehicule);     
-            }
-         }
-        return vehiculesPrixBas;
-    }
+
     
     public double getPrixMajore(){
         double prixMajore;
@@ -154,5 +148,41 @@ public class Vehicule {
             }
         }
         return prixMajore;
+    }
+    
+       /**
+     * @author Gael CHENEVIER
+     * @version 1.0
+     */
+    public static BeanItemContainer<Vehicule> getVehiculesEssence() {
+        
+        BeanItemContainer<Vehicule> vehiculesEssence = new BeanItemContainer<Vehicule>(Vehicule.class);
+        List<Vehicule> listeVehicule = (List<Vehicule>)vehicules.getItemIds();
+        
+         for (Vehicule vehicule : listeVehicule) {
+             
+            if( vehicule.getCarburant().equals("Essence") ){
+                 vehiculesEssence.addBean(vehicule);     
+            }
+         }
+        return vehiculesEssence;
+    }
+    
+       /**
+     * @author Gael CHENEVIER
+     * @version 1.0
+     */
+    public static BeanItemContainer<Vehicule> getVehiculesDiesel() {
+        
+        BeanItemContainer<Vehicule> vehiculesDiesel = new BeanItemContainer<Vehicule>(Vehicule.class);
+        List<Vehicule> listeVehicule = (List<Vehicule>)vehicules.getItemIds();
+        
+         for (Vehicule vehicule : listeVehicule) {
+             
+            if( vehicule.getCarburant().equals("Diesel") ){
+                 vehiculesDiesel.addBean(vehicule);     
+            }
+         }
+        return vehiculesDiesel;
     }
 }

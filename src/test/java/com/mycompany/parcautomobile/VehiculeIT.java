@@ -160,6 +160,34 @@ public class VehiculeIT {
         double result = instance.getPrixMajore(); 
         assertEquals(expResult, result, 0.0);
     }
-    
+
+    /**
+     * Test of testGetCarburantEssence method, of class Vehicule.
+     */
+    @Test
+    public void testGetCarburantEssence() {
+        System.out.println("getCarburant");
+        Vehicule instance = new Vehicule();
+        instance.setCarburant("Essence");
+        String expResult = "Essence";
+        String result = instance.getCarburant();
+        assertEquals(expResult, result);
+       
+    }
+
+    /**
+     * Test of testGetCarburantDiesel method, of class Vehicule.
+     */
+    @Test
+    public void testGetCarburantDiesel() {
+        System.out.println("getCarburant");
+        Vehicule instance = new Vehicule();
+        instance.setCarburant("Diesel");
+        String expResult = "Diesel";
+        String result = instance.getCarburant();
+        assertEquals(expResult, result);
+      
+    }
+
     
 }

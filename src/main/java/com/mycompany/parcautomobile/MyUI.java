@@ -31,8 +31,8 @@ import javax.servlet.annotation.WebServlet;
 public class MyUI extends UI {
 
     private Grid contactList = new Grid();
-    private Grid contactListPB = new Grid();
-    private Grid contactListV = new Grid();
+    private Grid contactListE = new Grid();
+    private Grid contactListD = new Grid();
     private Table contactTable = new Table();
     
 
@@ -53,26 +53,26 @@ public class MyUI extends UI {
         contactList.setContainerDataSource(Vehicule.getVehicules());
 
         //contactTable.setContainerDataSource(new BeanItemContainer<>( Vehicule.class));
-        contactList.setColumnOrder("marque", "modele", "prix");  // choisir l'ordre des colonnes
+        contactList.setColumnOrder("marque", "modele", "prix","carburant");  // choisir l'ordre des colonnes
         contactList.removeColumn("id"); // masquer la colonne
         //  contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
         contactList.setSizeFull();
-        
-        contactListPB.setContainerDataSource(Vehicule.getVehiculesPrixBas());
 
-        //contactTable.setContainerDataSource(new BeanItemContainer<>( Vehicule.class));
-        contactListPB.setColumnOrder("marque", "modele", "prix");  // choisir l'ordre des colonnes
-        contactListPB.removeColumn("id");  // masquer la colonne
-        //  contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
-        contactListPB.setSizeFull();
-        
-        contactListV.setContainerDataSource(Visiteur.getVisiteurs());
+        contactListE.setContainerDataSource(Vehicule.getVehiculesEssence());
 
-        //contactTable.setContainerDataSource(new BeanItemContainer<>( Visiteur.class));
-        contactListV.setColumnOrder("prenom", "nom", "codeP", "adresse");  // choisir l'ordre des colonnes
-        contactListV.removeColumn("id");
+       // contactTable.setContainerDataSource(new BeanItemContainer<>( Vehicule.class));
+        contactListE.setColumnOrder("marque", "modele", "prix", "carburant");  // choisir l'ordre des colonnes
+        contactListE.removeColumn("id");
         //  contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
-        contactListV.setSizeFull();
+        contactListE.setSizeFull();
+        
+       contactListD.setContainerDataSource(Vehicule.getVehiculesDiesel());
+
+       // contactTable.setContainerDataSource(new BeanItemContainer<>( Vehicule.class));
+        contactListD.setColumnOrder("marque","modele", "prix", "carburant");  // choisir l'ordre des colonnes
+        contactListD.removeColumn("id");
+        //  contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
+        contactListD.setSizeFull();
         
    
    Init uniqueinstance=Init.getInstance();
@@ -91,12 +91,12 @@ public class MyUI extends UI {
         final VerticalLayout layout = new VerticalLayout();
         layout.setMargin(true);
         // ajouts de composants
-        layout.addComponent(new Label(" Parc de véhicule"));
+        layout.addComponent(new Label("Parc de véhicule"));
         layout.addComponent(contactList);
-        layout.addComponent(new Label(" Véhicules < 15000 €"));
-        layout.addComponent(contactListPB);
-        layout.addComponent(new Label(" Visiteurs"));
-        layout.addComponent(contactListV);
+        layout.addComponent(new Label("Véhicules Essence"));
+        layout.addComponent(contactListE);
+        layout.addComponent(new Label("Véhicules Diesel"));
+        layout.addComponent(contactListD);
         //layout.addComponent(contactTable);
         setContent(layout);  // affectation de la vue
        
